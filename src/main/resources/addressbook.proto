@@ -1,0 +1,92 @@
+option java_package = "com.protocolBufferTest";
+option java_outer_classname = "AddressBookProtos";
+
+message Contact {
+
+  required int32 id = 1;
+  optional string contactType = 2;
+  optional string productId = 3;
+  optional string foreignIdentifier = 4;
+  optional string creationDate = 5;
+  optional string modificationDate = 6;
+  optional string formattedName = 7;
+  optional string timezone = 8;
+  optional string firstName = 9;
+  optional string middleName = 10;
+  optional string lastName = 11;
+  optional string prefix = 12;
+  optional string suffix = 13;
+  optional string nickname = 14;
+  optional string organization = 15;
+  optional string jobTitle = 16;
+  optional string birthday = 17;
+  optional string anniversary = 18;
+  optional string gender = 19;
+  optional string spouse = 20;
+  optional string children = 21;
+  optional string hobby = 22;
+  optional string assistant = 23;
+
+  enum PhoneType {
+      P_MOBILE = 0;
+      P_HOME = 1;
+      P_WORK = 2;
+      P_FAX = 3;
+      P_PAGER = 4;
+    }
+    message PhoneNumber {
+      required string number = 1;
+      optional PhoneType type = 2 [default = P_HOME];
+    }
+  repeated PhoneNumber phone = 24;
+
+  enum EmailType {
+       E_INTERNET = 0;
+       E_HOME = 1;
+       E_WORK = 2;
+     }
+     message EmailId {
+       required string emailAddress = 1;
+       optional EmailType type = 2 [default = E_INTERNET];
+     }
+   repeated EmailId email = 25;
+
+   message Address {
+       optional string pobox = 1;
+       required string addressLine1 = 2;
+       optional string addressLine2 = 3;
+       required string city = 4;
+       optional string country = 5;
+       required string state = 6;
+       required string zip = 7;
+     }
+  repeated Address address = 26;
+
+  enum WebType {
+      W_HOME = 1;
+      W_WORK = 2;
+    }
+    message WebURL {
+      required string url = 1;
+      optional WebType type = 2 [default = W_HOME];
+    }
+
+   repeated WebURL webURL = 27;
+
+   optional string geographicPosition = 28;
+   optional string speedDial = 29;
+   optional string ringtone = 30;
+   optional string businessHours = 31;
+   optional string paymentMethods = 32;
+   optional string generalInfo = 33;
+   optional string YPCategory = 34;
+   optional string autoUpdate = 35;
+   optional string note = 36;
+
+}
+
+
+
+message AddressBook {
+  repeated Contact contact = 1;
+}
